@@ -1,0 +1,7 @@
+export CLASSPATH=".:/home/e20160005796/Documents/M1-GL/HAI705I_Compilation/antlr-4.11.1-complete.jar:$CLASSPATH"
+alias antlr4='java -jar /home/e20160005796/Documents/M1-GL/HAI705I_Compilation/antlr-4.11.1-complete.jar'
+alias grun='java org.antlr.v4.gui.TestRig'
+
+antlr4 Hello.g4
+javac Hello*.java
+grun Hello prog -gui
