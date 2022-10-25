@@ -5,26 +5,40 @@ import java.util.ArrayList;
 public class Hotel
 {
 	public String nom;
-	public String adresse;
+	public Adresse adresse;
 	public int nbEtoiles;
-	public int nbPlaces;
 	
 	public ArrayList<Chambre> li_Chambres;
+	public int nbPlaces;
 	
-	public Hotel(String nom, String adresse, int prix, int nbEtoiles, int nbLits)
+	public Hotel(String nom, Adresse adresse, int nbEtoiles, int nbLits)
 	{
 		super();
 		this.nom = nom;
 		this.adresse = adresse;
 		this.nbEtoiles = nbEtoiles;
+		
 		this.li_Chambres = new ArrayList<Chambre>();
+		this.nbPlaces = 0;
 	}
 	
-	public void addChambre(Chambre x)
+	public void addChambre(Integer nbLits, Integer superficie, Integer prix)
 	{
-		this.li_Chambres.add(x);
+		Chambre c = new Chambre(nbLits, superficie, prix);
+		this.li_Chambres.add(c);
+		nbPlaces++;
 	}
 
+	public void setNbPlaces(int nbPlaces)
+	{
+		this.nbPlaces = nbPlaces;
+	}
+	
+	public int getNbPlaces()
+	{
+		return nbPlaces;
+	}
+	
 	public String getNom()
 	{
 		return nom;
@@ -35,12 +49,12 @@ public class Hotel
 		this.nom = nom;
 	}
 	
-	public String getAdresse()
+	public Adresse getAdresse()
 	{
 		return adresse;
 	}
 	
-	public void setAdresse(String adresse)
+	public void setAdresse(Adresse adresse)
 	{
 		this.adresse = adresse;
 	}

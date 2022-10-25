@@ -1,11 +1,24 @@
 package reservation;
 
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Chambre
 {
 	public Integer nbLits;
 	public Integer superficie;
 	public Integer prix;
 	
+	public Chambre(Integer nbLits, Integer superficie, Integer prix)
+	{
+		super();
+		this.nbLits = nbLits;
+		this.superficie = superficie;
+		this.prix = prix;
+	}
+
+
 	public Integer getNbLits()
 	{
 		return nbLits;

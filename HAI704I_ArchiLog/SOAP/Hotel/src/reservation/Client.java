@@ -21,9 +21,9 @@ public class Client
 		this.cryptoCard = cryptoCard;
 	}
 	
-	public ArrayList<Hotel> demandeDispo(Agence ag, String ville, Date dateArr, Date dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
+	public ArrayList<Chambre> demandeDispo(Agence ag, String ville, Date dateArr, Date dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
 	{
-		return ag.rechercheHotel(ville, dateArr, dateDep, prixMin, prixMax, nbEtoiles, nbLits);
+		return ag.recherche(ville, dateArr, dateDep, prixMin, prixMax, nbEtoiles, nbLits);
 	}
 	
 	public void reservation(Hotel h)
