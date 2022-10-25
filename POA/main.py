@@ -105,4 +105,3 @@ def move(direction) :
 for i in range(0, 10) :
     move(check(pos))
     print(pos)
-    

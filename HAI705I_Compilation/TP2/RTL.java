@@ -1,5 +1,7 @@
 // RTL.java
 
+// Réalisé par Allan CRISTA et Lucas ROUQUAIROL (Master GL) 10/2022
+
 import java.util.*;
 
 /**********/
