@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import sys
 
 #ToDO : Corriger dépassement tab
 
@@ -11,8 +12,8 @@ nbCacas = 3
 container = 0
 end = False
 
-pos = np.array([0,0])
-map = np.array([[0,0,0,0,0],[0,0,0,0,0]])
+pos = [0,0]
+map = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
 
 # Remplir les obstacle (2)
 for i in range(h) : 
@@ -85,22 +86,21 @@ def check(pos) :
         else: # on regarde vers le bas
             scanY += 1
 
-
-
 # Avancer
 
 def move(direction) :
-    match direction:
-        case "up":
-            pos[1] -= 1
-        case "right":
-            pos[0] += 1
-        case "left":
-            pos[0] -= 1
-        case "down":
-            pos[1] += 1
-        case _:
-            return "ERROR"
+    if(direction == "up") :
+        pos[1] -= 1
+
+    if(direction == "right") :
+        pos[0] += 1
+
+    if(direction == "left") :
+        pos[0] -= 1 
+
+    if(direction == "down") :
+        pos[1] += 1 
+
 
 for i in range(0, 10) :
     move(check(pos))
