@@ -1,5 +1,6 @@
 package reservation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -10,7 +11,7 @@ public class Client
 	
 	public long numCard;
 	public int cryptoCard;
-	public ArrayList<Hotel> hotelDispo;
+	public ArrayList<Chambre> li_chambreReserve;
 	
 	public Client(String nom, String prenom, int numCard, int cryptoCard)
 	{
@@ -21,14 +22,15 @@ public class Client
 		this.cryptoCard = cryptoCard;
 	}
 	
-	public ArrayList<Chambre> demandeDispo(Agence ag, String ville, Date dateArr, Date dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
+	public ArrayList<Chambre> demandeDispo(Agence ag, String ville, LocalDate dateArr, LocalDate dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
 	{
 		return ag.recherche(ville, dateArr, dateDep, prixMin, prixMax, nbEtoiles, nbLits);
 	}
 	
-	public void reservation(Hotel h)
+	public void reservation(Chambre c, LocalDate dateDep)
 	{
-		
+		c.dateLibre = dateDep;
+		li_chambreReserve.add(c);
 	}
 	
 	public String getNom()

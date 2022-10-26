@@ -1,5 +1,6 @@
 package reservation;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 
@@ -8,7 +9,7 @@ public class Agence
 	public String nom;
 	public ArrayList<Hotel> li_HotelsPartenaire;
 	
-	public ArrayList<Chambre> recherche(String ville, Date dateArr, Date dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
+	public ArrayList<Chambre> recherche(String ville, LocalDate dateArr, LocalDate dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
 	{
 		ArrayList<Chambre> li_chambreResult = new ArrayList<Chambre>();
 		
@@ -18,7 +19,7 @@ public class Agence
 			{
 				for (Chambre c : h.li_Chambres)
 				{
-					if (c.prix >= prixMin && c.prix <= prixMax)
+					if (c.prix >= prixMin && c.prix <= prixMax && c.dateLibre.isBefore(dateArr))
 					{
 						li_chambreResult.add(c);
 					}
