@@ -11,11 +11,11 @@ public class Hotel
 	public ArrayList<Chambre> li_Chambres;
 	public int nbPlaces;
 	
-	public Hotel(String nom, Adresse adresse, int nbEtoiles, int nbLits)
+	public Hotel(String nom, Adresse adr, int nbEtoiles)
 	{
 		super();
 		this.nom = nom;
-		this.adresse = adresse;
+		this.adresse = adr;
 		this.nbEtoiles = nbEtoiles;
 		
 		this.li_Chambres = new ArrayList<Chambre>();
@@ -26,7 +26,7 @@ public class Hotel
 	{
 		Chambre c = new Chambre(nbLits, superficie, prix);
 		this.li_Chambres.add(c);
-		nbPlaces++;
+		nbPlaces+=nbLits;
 	}
 
 	public void setNbPlaces(int nbPlaces)

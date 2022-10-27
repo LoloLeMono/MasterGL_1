@@ -2,12 +2,10 @@ package reservation;
 
 public class Adresse
 {
-	String pays;
-	String ville;
+	String pays, ville, rue;
 	Integer numero;
-	Integer rue;
 	
-	public Adresse(String pays, String ville, Integer numero, Integer rue)
+	public Adresse(String pays, String ville, Integer numero, String rue)
 	{
 		super();
 		this.pays = pays;
@@ -46,12 +44,12 @@ public class Adresse
 		this.numero = numero;
 	}
 	
-	public Integer getRue()
+	public String getRue()
 	{
 		return rue;
 	}
 	
-	public void setRue(Integer rue)
+	public void setRue(String rue)
 	{
 		this.rue = rue;
 	}

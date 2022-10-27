@@ -29,10 +29,10 @@ public class Chambre
 		
 		dateBuff = dateArr;
 		
-		while(dateBuff != dateDep)
+		while(!dateBuff.equals(dateDep.plusDays(1)))
 		{
 			li_dateClient.add(dateBuff);
-			dateBuff.plusDays(1);
+			dateBuff = dateBuff.plusDays(1);
 		}
 		
 		
@@ -40,7 +40,7 @@ public class Chambre
 		{
 			for (int j=0; j<li_dateClient.size(); j++)
 			{
-				if (li_dateReserve.get(i) == li_dateClient.get(j))
+				if (li_dateReserve.get(i).equals(li_dateClient.get(j)))
 				{
 					trigg = false;
 				}
@@ -80,5 +80,11 @@ public class Chambre
 	public void setPrix(Integer prix)
 	{
 		this.prix = prix;
+	}
+	
+	@Override
+	public String toString()
+	{
+		return "Chambre de " + superficie + " m² avec " + nbLits + " lits pour " + prix + " € par nuit.";
 	}
 }

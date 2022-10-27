@@ -13,13 +13,15 @@ public class Client
 	public int cryptoCard;
 	public ArrayList<Chambre> li_chambreReserve;
 	
-	public Client(String nom, String prenom, int numCard, int cryptoCard)
+	public Client(String nom, String prenom, long numCard, int cryptoCard)
 	{
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.numCard = numCard;
 		this.cryptoCard = cryptoCard;
+		
+		this.li_chambreReserve = new ArrayList<Chambre>();
 	}
 	
 	public ArrayList<Chambre> demandeDispo(Agence ag, String ville, LocalDate dateArr, LocalDate dateDep, int prixMin, int prixMax, int nbEtoiles, int nbLits)
@@ -27,9 +29,14 @@ public class Client
 		return ag.recherche(ville, dateArr, dateDep, prixMin, prixMax, nbEtoiles, nbLits);
 	}
 	
-	public void reservation(Chambre c, LocalDate dateDep)
+	public void reservation(Chambre c, LocalDate dateArr, LocalDate dateDep)
 	{
-		c.dateLibre = dateDep;
+		while (!dateArr.equals(dateDep))
+		{
+			c.li_dateReserve.add(dateArr);
+			dateArr.plusDays(1);
+		}
+		
 		li_chambreReserve.add(c);
 	}
 	
