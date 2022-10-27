@@ -85,6 +85,6 @@ public class Chambre
 	@Override
 	public String toString()
 	{
-		return "Chambre de " + superficie + " m² avec " + nbLits + " lits pour " + prix + " € par nuit.";
+		return "Chambre de " + superficie + "m² avec " + nbLits + " lits pour " + prix + "€ par nuit.";
 	}
 }

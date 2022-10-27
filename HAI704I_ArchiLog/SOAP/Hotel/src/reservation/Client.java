@@ -34,8 +34,10 @@ public class Client
 		while (!dateArr.equals(dateDep))
 		{
 			c.li_dateReserve.add(dateArr);
-			dateArr.plusDays(1);
+			dateArr = dateArr.plusDays(1);
 		}
+		
+		c.li_dateReserve.add(dateArr);
 		
 		li_chambreReserve.add(c);
 	}
