@@ -10,14 +10,16 @@ public class Chambre
 	public Integer nbLits;
 	public Integer superficie;
 	public Integer prix;
+	public Hotel h;
 	ArrayList<LocalDate> li_dateReserve;
 	
-	public Chambre(Integer nbLits, Integer superficie, Integer prix)
+	public Chambre(Integer nbLits, Integer superficie, Integer prix, Hotel h)
 	{
 		super();
 		this.nbLits = nbLits;
 		this.superficie = superficie;
 		this.prix = prix;
+		this.h = h;
 		this.li_dateReserve = new ArrayList<LocalDate>();
 	}
 	

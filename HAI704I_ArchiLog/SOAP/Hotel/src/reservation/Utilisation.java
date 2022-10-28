@@ -23,27 +23,17 @@ public class Utilisation
 		HashMap<Hotel,ArrayList<Chambre>> mapHotels = new HashMap<>();
 		
 		Adresse adr = new Adresse("France", "Paris", 3, "Rue caca");
-		Hotel h = new Hotel("Hotel_Mercure", adr, 4);
 		
-		dicoHotels.put(h, new ArrayList<Chambre>());
-		dicoHotels.get(h).add(new Chambre(2, 100, 500));
-		//li_Hotels.add(new Hotel("Hotel_Mercure", adr, 4));
-		//li_Hotels.get(0).addChambre(2, 100, 500);
+		li_Hotels.add(new Hotel("Hotel_Mercure", adr, 4));
+		li_Hotels.get(0).addChambre(2, 100, 500);
 		
-		h = new Hotel("Hotel_Ibis", adr, 2);
-		dicoHotels.get(h).add(new Chambre(2, 30, 50));
-		dicoHotels.get(h).add(new Chambre(2, 40, 70));
-		dicoHotels.get(h).add(new Chambre(1, 20, 30));
-		
-		//li_Hotels.add(new Hotel("Hotel_Ibis", adr, 2));
-		//li_Hotels.get(1).addChambre(2, 30, 50);
-		//li_Hotels.get(1).addChambre(2, 40, 70);
-		//li_Hotels.get(1).addChambre(1, 20, 30);
+		li_Hotels.add(new Hotel("Hotel_Ibis", adr, 2));
+		li_Hotels.get(1).addChambre(2, 30, 50);
+		li_Hotels.get(1).addChambre(2, 40, 70);
+		li_Hotels.get(1).addChambre(1, 20, 30);
 		
 		System.out.println("Creation d'une agence Agence_1.");
-		ArrayList<Hotel> li_HotelsPartenaires = new ArrayList<Hotel>();
-		li_HotelsPartenaires.add(h);
-		Agence agence = new Agence("Agence_1", li_HotelsPartenaires);
+		Agence agence = new Agence("Agence_1", li_Hotels);
 		
 		System.out.println("Creation d'un client Max Holloway.");
 		li_Clients.add(new Client("Holloway", "Max", 1234_5678_9012_3456L, 587));
