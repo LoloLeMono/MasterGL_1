@@ -1,9 +1,28 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <string.h>
+
 
 // constants for size of char arrays to store filename, the line from the file
 #define FILENAME_SIZE 1024
 #define MAX_LINE 2048
+
+bool findString(char buffer[], char search[])
+{
+	char *ptr = strstr(buffer, search);
+  bool res;
+
+	if (ptr != NULL) /* Substring found */
+	{
+		res = true;
+	}
+	else /* Substring not found */
+	{
+		res = false;
+	}
+
+  return res;
+}
 
 int main()
 {
@@ -42,6 +61,19 @@ int main()
   } while (buffer[0] == 'c');
 
   printf("La derniere ligne : %s", buffer);
+
+  if (findString(buffer, "edge"))
+  {
+    printf("Type = edge\n");
+  }
+  else if (findString(buffer, "col"))
+  {
+    printf("Type = col\n");
+  }
+  else
+  {
+    perror("Le fichier ne suis pas les conventions\n");
+  }
 
   // close our access to the file
   fclose(file);
