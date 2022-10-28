@@ -23,6 +23,16 @@ public class Chambre
 		this.li_dateReserve = new ArrayList<LocalDate>();
 	}
 	
+	public Hotel getH()
+	{
+		return h;
+	}
+
+	public void setH(Hotel h)
+	{
+		this.h = h;
+	}
+
 	public Boolean estLibre(LocalDate dateArr, LocalDate dateDep)
 	{
 		ArrayList<LocalDate> li_dateClient = new ArrayList<LocalDate>();
@@ -87,6 +97,6 @@ public class Chambre
 	@Override
 	public String toString()
 	{
-		return "Chambre de " + superficie + "m² avec " + nbLits + " lits pour " + prix + "€ par nuit.";
+		return "Chambre de " + superficie + "m² avec " + nbLits + " lits pour " + prix + "€ par nuit";
 	}
 }

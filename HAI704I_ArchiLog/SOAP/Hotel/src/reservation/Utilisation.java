@@ -19,9 +19,6 @@ public class Utilisation
 		ArrayList<Hotel> li_Hotels = new ArrayList<Hotel>();
 		ArrayList<Client> li_Clients = new ArrayList<Client>();
 		
-		Dictionary<Hotel,ArrayList<Chambre>> dicoHotels = new Hashtable<Hotel,ArrayList<Chambre>>();
-		HashMap<Hotel,ArrayList<Chambre>> mapHotels = new HashMap<>();
-		
 		Adresse adr = new Adresse("France", "Paris", 3, "Rue caca");
 		
 		li_Hotels.add(new Hotel("Hotel_Mercure", adr, 4));
@@ -32,10 +29,10 @@ public class Utilisation
 		li_Hotels.get(1).addChambre(2, 40, 70);
 		li_Hotels.get(1).addChambre(1, 20, 30);
 		
-		System.out.println("Creation d'une agence Agence_1.");
+		System.out.println("Creation d'une agence : Agence_1");
 		Agence agence = new Agence("Agence_1", li_Hotels);
 		
-		System.out.println("Creation d'un client Max Holloway.");
+		System.out.println("Creation d'un client : Max Holloway");
 		li_Clients.add(new Client("Holloway", "Max", 1234_5678_9012_3456L, 587));
 		
 		LocalDate dateArr = LocalDate.of(2022, 11, 1);
@@ -55,7 +52,7 @@ public class Utilisation
 		li_Clients.get(0).reservation(li_chambreDispo.get(0), dateArr, dateDep);
 		
 		System.out.println("La chambre est réservé pour ces dates : " + li_chambreDispo.get(0).li_dateReserve);
-		System.out.println("Le client à reservé la chambre : " + li_Clients.get(0).li_chambreReserve);
+		System.out.println("Le client à reservé la chambre : " + li_Clients.get(0).li_chambreReserve.get(0) + " de l'hotel : " + li_Clients.get(0).li_chambreReserve.get(0).getH().getNom());
 		System.out.println("FIN");
 	}
 	
