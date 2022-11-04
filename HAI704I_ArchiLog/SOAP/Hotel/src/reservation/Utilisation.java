@@ -28,19 +28,11 @@ public class Utilisation
 		li_Hotels.get(1).addChambre(2, 30, 50);
 		li_Hotels.get(1).addChambre(2, 40, 70);
 		li_Hotels.get(1).addChambre(1, 20, 30);
-<<<<<<< HEAD
 		
 		System.out.println("Creation d'une agence Agence_1.");
 		Agence agence = new Agence("Agence_1", li_Hotels);
 		
 		System.out.println("Creation d'un client Max Holloway.");
-=======
-		
-		System.out.println("Creation d'une agence : Agence_1");
-		Agence agence = new Agence("Agence_1", li_Hotels);
-		
-		System.out.println("Creation d'un client : Max Holloway");
->>>>>>> 9ec7ccaac2542e72b6decc5ac48c9de23f9d75fa
 		li_Clients.add(new Client("Holloway", "Max", 1234_5678_9012_3456L, 587));
 		
 		LocalDate dateArr = LocalDate.of(2022, 11, 1);
