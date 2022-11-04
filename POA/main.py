@@ -1,107 +1,187 @@
 import numpy as np
 import random
-import sys
 
+# n obstacle pour une matrice n*n
 #ToDO : Corriger dépassement tab
 
-# Priorité = haut > droite > gauche > back
+#1 = caca
+#2 = obstacle
+#3 = recipe
+
+# Priorité = haut > droite > gauche > bas
 
 h = 5
 nbCacas = 3
 #capacity = 3
 container = 0
 end = False
-
-pos = [0,0]
-map = [[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]]
-
-# Remplir les obstacle (2)
-for i in range(h) : 
-
-    randX = random.randint(0, h)
-    randY = random.randint(0, h)
-    
-    map[randX][randY] = 2
-
-# Ajoute les cacas (1)
-for i in range(nbCacas) :
-
-    randX = random.randint(0, h)
-    randY = random.randint(0, h)
-
-    while map[randX][randY] != 0 :
-        map[randX][randY] = 1
-
-nbRecipes = ((h*h)/25)+1
-
-# Ajoute les recipes (3)
-for i in range(nbRecipes) :
-    randX = random.randint(0, h)
-    randY = random.randint(0, h)
-    
-    while map[randX][randY] != 0 :
-        map[randX][randY] = 3
-
-print (map)
-
-# Check : Retourne la direction d'un caca
-
-def check(pos) : 
-    scanX = pos[0]
-    scanY = pos[1]
-
-    while map[scanX][scanY] != 2 : # tant qu'on ne tombe pas sur un obstacle
-        if map[scanX][scanY] == 1 : # si on trouve un caca
-            return "up"
-        else: # on reagrde vers le haut
-            scanY -= 1
-
-    scanX = pos[0]
-    scanY = pos[1]
-
-    while map[scanX][scanY] != 2 : # tant qu'on ne tombe pas sur un obstacle
-        if map[scanX][scanY] == 1 : # si on trouve un caca
-            return "right"
-            # go to
-        else: # on regarde vers la droite
-            scanX += 1
-
-    scanX = pos[0]
-    scanY = pos[1]
-
-    while map[scanX][scanY] : # tant qu'on ne tombe pas sur un obstacle
-        if map[scanX][scanY] : # si on trouve un caca
-            return "left"
-            # go to
-        else: # on regarde vers la gauche
-            scanX -= 1
-
-    scanX = pos[0]
-    scanY = pos[1]
-
-    while map[scanX][scanY] != 2 : # tant qu'on ne tombe pas sur un obstacle
-        if map[scanX][scanY] == 1 : # si on trouve un caca
-            return "down"
-            # go to
-        else: # on regarde vers le bas
-            scanY += 1
-
-# Avancer
-
-def move(direction) :
-    if(direction == "up") :
-        pos[1] -= 1
-
-    if(direction == "right") :
-        pos[0] += 1
-
-    if(direction == "left") :
-        pos[0] -= 1 
-
-    if(direction == "down") :
-        pos[1] += 1 
+pos = np.array([0, 0])
 
 
-for i in range(0, 10) :
+# Retourne la direction d'un caca
+def check(pos):
+  scanL = pos[0]
+  scanC = pos[1]
+  #print("scanL = ", scanL)
+  #print("scanC = ", scanC)
+
+  # tant qu'on ne tombe pas sur un obstacle && on depasse pas en haut
+  while scanL >= 0 and mape[scanL][scanC] != 2:
+    print("Je scanne en ",scanL, scanC,)
+    if mape[scanL][scanC] == 1:  # si on trouve un caca
+      print("Caca scanné vers le haut")
+      return "up"
+    else:  # on reagrde vers le haut
+      scanL -= 1
+      print("Je regarde en ",scanL, scanC,)
+
+  scanL = pos[0]
+  scanC = pos[1]
+
+  # tant qu'on ne tombe pas sur un obstacle && on dépasse pas à droite
+  while scanC <= h - 1 and mape[scanL][scanC] != 2:
+    print("Je scanne en ",scanL, scanC,)
+    if mape[scanL][scanC] == 1:  # si on trouve un caca
+      print("Caca scanné vers la droite")
+      return "right"
+      # go to
+    else:  # on regarde vers la droite
+      scanC += 1
+      print("Je regarde en ",scanL, scanC,)
+
+  scanL = pos[0]
+  scanC = pos[1]
+
+  # tant qu'on ne tombe pas sur un obstacle et on dépasse pas à gauche
+  while scanC >= 0 and mape[scanL][scanC] != 2:
+    print("Je scanne en ",scanL, scanC,)
+    if mape[scanL][scanC] == 1:  # si on trouve un caca
+      print("Caca scanné vers la gauche")
+      return "left"
+      # go to
+    else:  # on regarde vers la gauche
+      scanC -= 1
+      print("Je regarde en ",scanL, scanC,)
+
+  scanL = pos[0]
+  scanC = pos[1]
+
+  # tant qu'on ne tombe pas sur un obstacle et on depasse pas en bas
+  while scanL <= h - 1 and mape[scanL][scanC] != 2:
+    print("Je scanne en ",scanL, scanC,)
+    if mape[scanL][scanC] == 1:  # si on trouve un caca
+      print("Caca scanné vers le bas")
+      return "down"
+      # go to
+    else:  # on regarde vers le bas
+      scanL += 1
+      print("Je regarde en ",scanL, scanC,)
+
+  print("retour de check = null")
+  return "null"
+
+
+# move : Incremente pos dans une direction sinon avance en suivant les priorités
+def move(direction):
+  if (direction == "up"):
+    pos[0] -= 1
+    print("Je monte et la nouvelle pos = ", pos)
+
+  if (direction == "right"):
+    pos[1] += 1
+    print("Je droite et la nouvelle pos = ", pos)
+
+  if (direction == "left"):
+    pos[1] -= 1
+    print("Je gauche et la nouvelle pos = ", pos)
+
+  if (direction == "down"):
+    pos[0] += 1
+    print("Je descend et la nouvelle pos = ", pos)
+
+  #else : on trouve pas caca => avance ou droite ou gauche ou recule
+  if (direction == "null"):
+    if pos[0] - 1 >= 0 and mape[pos[0] - 1, pos[1]] != 2:
+      move("up")
+    elif pos[1] + 1 < h and mape[pos[0], pos[1] + 1] != 2:
+      move("right")
+    elif pos[1] - 1 >= 0 and mape[pos[0], pos[1] - 1] != 2:
+      move("left")     
+    elif pos[0] + 1 < h and mape[pos[0] + 1, pos[1]] != 2:
+      move("down")
+      
+
+  return 0
+
+
+# spawn : Initialise pos au recipe le plus proche et retourne 0
+def spawn():
+    for li in range(h):
+        for col in range(h):
+            if mape[li][col] == 3:
+                pos[0] = li
+                pos[1] = col
+                print("Spawn en ", pos)
+                return 0
+
+    print("Erreur spawn")
+
+
+mape = np.array([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0],
+                 [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])
+
+
+# fillMap : Construit la map
+def fillMape():
+  # Remplir les obstacle (2)
+  for i in range(h):
+
+    randX = random.randint(0, h - 1)
+    randY = random.randint(0, h - 1)
+
+    mape[randX][randY] = 2
+
+  # Ajoute les cacas (1)
+  for i in range(nbCacas):
+
+    randX = random.randint(0, h - 1)
+    randY = random.randint(0, h - 1)
+
+    while mape[randX][randY] != 0:
+      randX = random.randint(0, h - 1)
+      randY = random.randint(0, h - 1)
+
+    mape[randX][randY] = 1
+
+  nbRecipes = int(((h * h) / 25) + 1)
+
+  # Ajoute les recipes (3)
+  randX = random.randint(0, h - 1)
+  randY = random.randint(0, h - 1)
+
+  while mape[randX][randY] != 0:
+    randX = random.randint(0, h - 1)
+    randY = random.randint(0, h - 1)
+
+  mape[randX][randY] = 3
+
+  print(mape)
+
+
+#
+#------------EXECUTION---------------
+fillMape()
+spawn()
+
+# 1 recherche
+#print(check(pos))
+
+while (nbCacas>0):
+    print("DEPLACEMENT SUIVANT")
     move(check(pos))
-    print(pos)
+    if mape[pos[0], pos[1]] == 1:
+        print("CACA trouvé !")
+        mape[pos[0], pos[1]] = 0
+        nbCacas -= 1
+    print(mape)
+
