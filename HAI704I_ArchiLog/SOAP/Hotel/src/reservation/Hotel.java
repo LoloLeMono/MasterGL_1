@@ -24,7 +24,7 @@ public class Hotel
 	
 	public void addChambre(Integer nbLits, Integer superficie, Integer prix)
 	{
-		Chambre c = new Chambre(nbLits, superficie, prix);
+		Chambre c = new Chambre(nbLits, superficie, prix, this);
 		this.li_Chambres.add(c);
 		nbPlaces+=nbLits;
 	}
