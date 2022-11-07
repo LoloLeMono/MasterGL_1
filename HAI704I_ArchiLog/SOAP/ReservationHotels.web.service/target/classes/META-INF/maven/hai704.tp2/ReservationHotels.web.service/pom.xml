@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>hai704.tp2</groupId>
+  <artifactId>ReservationHotels.web.service</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <name>ReservationHotelsSOPAWebService</name>
+  <dependencies>
+  	<!-- https://mvnrepository.com/artifact/com.sun.xml.ws/jaxws-rt -->
+	<dependency>
+	    <groupId>com.sun.xml.ws</groupId>
+	    <artifactId>rt</artifactId>
+	    <version>2.3.1</version>
+	</dependency>
+	
+	<dependency>
+	    <groupId>org.glassfish.jaxb</groupId>
+	    <artifactId>txw2</artifactId>
+	    <version>2.4.0-b180725.0644</version>
+	</dependency>
+
+  </dependencies>
+</project>
