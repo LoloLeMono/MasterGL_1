@@ -32,7 +32,11 @@ public class Utilisation
 		System.out.println("Creation d'une agence Agence_1.");
 		Agence agence = new Agence("Agence_1", li_Hotels);
 		
+<<<<<<< HEAD
 		System.out.println("Creation d'un client Max Holloway.");
+=======
+		System.out.println("Creation d'un client : Max Holloway");
+>>>>>>> d7e97c272df6bb07555487d3e74914dd592999fc
 		li_Clients.add(new Client("Holloway", "Max", 1234_5678_9012_3456L, 587));
 		
 		LocalDate dateArr = LocalDate.of(2022, 11, 1);
