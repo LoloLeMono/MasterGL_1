@@ -7,11 +7,11 @@ import java.util.ArrayList;
 
 public class Chambre
 {
-	public Integer nbLits;
-	public Integer superficie;
-	public Integer prix;
-	public Hotel h;
-	ArrayList<LocalDate> li_dateReserve;
+	private Integer nbLits;
+	private Integer superficie;
+	private Integer prix;
+	private Hotel h;
+	private ArrayList<LocalDate> li_dateReserve;
 	
 	public Chambre(Integer nbLits, Integer superficie, Integer prix, Hotel h)
 	{

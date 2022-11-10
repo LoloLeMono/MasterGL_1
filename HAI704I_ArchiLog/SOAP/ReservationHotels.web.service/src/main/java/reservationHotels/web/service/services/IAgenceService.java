@@ -14,18 +14,6 @@ public interface IAgenceService
 {
 	/* METHODS */
 	@WebMethod
-	String getNom();
-	
-	@WebMethod
-	void setNom(String nom);
-	
-	@WebMethod
-	ArrayList<Hotel> getLi_HotelsPartenaire();
-	
-	@WebMethod
-	void setLi_HotelsPartenaire(ArrayList<Hotel> li_HotelsPartenaire);
-	
-	@WebMethod
 	ArrayList<Hotel> addHotelPartenaire(Hotel h);
 	
 	@WebMethod
