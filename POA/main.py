@@ -10,8 +10,9 @@ import random
 
 # Priorité = haut > droite > gauche > bas
 
-h = 5
-nbCacas = 3
+h = 7
+nbCacas = 5
+nbObstacles = 10
 #capacity = 3
 container = 0
 end = False
@@ -102,6 +103,25 @@ def move(direction):
   #else : on trouve pas caca => avance ou droite ou gauche ou recule
   if (direction == "null"):
     if pos[0] - 1 >= 0 and mape[pos[0] - 1, pos[1]] != 2:
+      if mape[pos[0] - 1, pos[1]] != 5:
+        move("up")
+        return 0
+    elif pos[1] + 1 < h and mape[pos[0], pos[1] + 1] != 2:
+      if mape[pos[0], pos[1] + 1] != 5:
+        move("right")
+        return 0
+    elif pos[1] - 1 >= 0 and mape[pos[0], pos[1] - 1] != 2:
+      if mape[pos[0], pos[1] - 1] != 5:
+        move("left")
+        return 0  
+    elif pos[0] + 1 < h and mape[pos[0] + 1, pos[1]] != 2:
+      if mape[pos[0] + 1, pos[1]] != 5:
+        move("down")
+        return 0
+    
+    # Si on est déjà passé partout
+
+    if pos[0] - 1 >= 0 and mape[pos[0] - 1, pos[1]] != 2:
       move("up")
     elif pos[1] + 1 < h and mape[pos[0], pos[1] + 1] != 2:
       move("right")
@@ -109,8 +129,7 @@ def move(direction):
       move("left")     
     elif pos[0] + 1 < h and mape[pos[0] + 1, pos[1]] != 2:
       move("down")
-      
-
+  
   return 0
 
 
@@ -127,14 +146,10 @@ def spawn():
     print("Erreur spawn")
 
 
-mape = np.array([[0, 0, 0, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 0, 0],
-                 [0, 0, 0, 0, 0], [0, 0, 0, 0, 0]])
-
-
 # fillMap : Construit la map
 def fillMape():
   # Remplir les obstacle (2)
-  for i in range(h):
+  for i in range(nbObstacles):
 
     randX = random.randint(0, h - 1)
     randY = random.randint(0, h - 1)
@@ -153,9 +168,7 @@ def fillMape():
 
     mape[randX][randY] = 1
 
-  nbRecipes = int(((h * h) / 25) + 1)
-
-  # Ajoute les recipes (3)
+  # Ajoute le recipe (3)
   randX = random.randint(0, h - 1)
   randY = random.randint(0, h - 1)
 
@@ -167,6 +180,7 @@ def fillMape():
 
   print(mape)
 
+mape = np.zeros([h, h])
 
 #
 #------------EXECUTION---------------
@@ -176,12 +190,12 @@ spawn()
 # 1 recherche
 #print(check(pos))
 
-while (nbCacas>0):
-    print("DEPLACEMENT SUIVANT")
-    move(check(pos))
-    if mape[pos[0], pos[1]] == 1:
-        print("CACA trouvé !")
-        mape[pos[0], pos[1]] = 0
-        nbCacas -= 1
-    print(mape)
+def main():
+  while (nbCacas>0):
+      print("DEPLACEMENT SUIVANT")
+      if mape[pos[0], pos[1]] == 1:
+          print("CACA trouvé !")
+          nbCacas -= 1
+      move(check(pos))
+      print(mape)
 
