@@ -2,6 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/socket.h>
+#include <netdb.h>
+#include<arpa/inet.h>
 
 // constants for size of char arrays to store filename, the line from the file
 #define FILENAME_SIZE 1024
@@ -59,7 +64,67 @@ void createLink(int firstNode, int secondNode) {
   }
 }
 
-int main()
+void comunication(int argc, char *argv[], int nbEdge)
+{
+  if (argc != 4)
+  {
+    printf("utilisation : %s ip_serveur port_serveur port_client\n", argv[0]);
+    exit(1);
+  }
+
+  /* Etape 1 : créer une socket */   
+  int ds = socket(PF_INET, SOCK_DGRAM, 0);
+
+  /* /!\ : Il est indispensable de tester les valeurs de retour de
+     toutes les fonctions et agir en fonction des valeurs
+     possibles. Voici un exemple */
+  if (ds == -1)
+  {
+    perror("Client : pb creation socket :");
+    exit(1); // je choisis ici d'arrêter le programme car le reste
+         // dépendent de la réussite de la création de la socket.
+  }
+  
+  /* J'ajoute des traces pour comprendre l'exécution et savoir
+     localiser des éventuelles erreurs */
+  printf("Client : creation de la socket réussie \n");
+
+  struct sockaddr_in ad;
+  ad.sin_family = AF_INET ;
+  ad.sin_addr.s_addr = INADDR_ANY ;
+  ad.sin_port = htons(atoi(argv[3]));
+
+  int res = bind(ds, (struct sockaddr*)&ad, sizeof(ad));
+
+  if (res < 0)
+  {
+    printf("Erreur de nommage");
+  }
+
+  struct sockaddr_in adServer;
+  adServer.sin_family = AF_INET;
+  adServer.sin_addr.s_addr = inet_addr(argv[1]);
+  adServer.sin_port = htons((short)atoi(argv[2]));
+  socklen_t lgAdr = sizeof(struct sockaddr_in);
+  
+  char *nbThreads = malloc(sizeof(char) * 2);
+  sprintf(nbThreads, "%f", (double)nbEdge);
+  printf("On envoi : %s", nbThreads);
+
+  int snd = sendto(ds, nbThreads, strlen(nbThreads)+1, 0, (struct sockaddr*) &adServer, sizeof(struct sockaddr_in));
+
+  if (snd < 0)
+  {
+    perror("Erreur envoi \n");
+    exit(1);
+  }
+
+  printf("Envoi reussi \n");
+
+  close(ds);
+}
+
+int main(int argc, char *argv[])
 {
   // file pointer will be used to open/read the file
   FILE *file;
@@ -125,6 +190,9 @@ int main()
 
   // close our access to the file
   fclose(file);
+
+  comunication(argc, argv, nbEdge);
+
 
   return 0;
 }
