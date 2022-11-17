@@ -99,7 +99,7 @@ int main()
     {
       int firstNode;
       int secondNode;
-      int **tabNodes = malloc(sizeof(int*) * nbLink); // Chaques cases de tabNodes représentent link
+      int tabNodes[nbLink][2]; // Chaques cases de tabNodes représentent un link
 
       char *buff2 = strtok(buffer, " ");
 
@@ -109,8 +109,8 @@ int main()
       secondNode = atoi(buff2);
       printf("Node1 = %d, Node2 = %d \n", firstNode, secondNode);
 
-      int tabBuf[2] = {firstNode, secondNode};
-      tabNodes[ind] = tabBuf;
+      tabNodes[ind][0] = firstNode;
+      tabNodes[ind][1] = secondNode;
       printf("tabNode[%d][0] = %d, tabNodes[%d][1] = %d\n", ind, tabNodes[ind][0], ind, tabNodes[ind][1]);
       ind += 1;
     }
