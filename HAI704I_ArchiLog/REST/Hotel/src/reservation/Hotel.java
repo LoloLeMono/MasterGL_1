@@ -22,9 +22,9 @@ public class Hotel
 		this.nbPlaces = 0;
 	}
 	
-	public void addChambre(Integer nbLits, Integer superficie, Integer prix)
+	public void addChambre(Integer nbLits, Integer prix, Hotel h)
 	{
-		Chambre c = new Chambre(nbLits, superficie, prix, this);
+		Chambre c = new Chambre(nbLits, prix, h);
 		this.li_Chambres.add(c);
 		nbPlaces+=nbLits;
 	}

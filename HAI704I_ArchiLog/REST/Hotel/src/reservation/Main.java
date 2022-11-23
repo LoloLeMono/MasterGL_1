@@ -22,12 +22,12 @@ public class Main
 		Adresse adr = new Adresse("France", "Paris", 3, "Rue caca");
 		
 		li_Hotels.add(new Hotel("Hotel_Mercure", adr, 4));
-		li_Hotels.get(0).addChambre(2, 100, 500);
+		li_Hotels.get(0).addChambre(2, 100, li_Hotels.get(0));
 		
 		li_Hotels.add(new Hotel("Hotel_Ibis", adr, 2));
-		li_Hotels.get(1).addChambre(2, 30, 50);
-		li_Hotels.get(1).addChambre(2, 40, 70);
-		li_Hotels.get(1).addChambre(1, 20, 30);
+		li_Hotels.get(1).addChambre(2, 30, li_Hotels.get(1));
+		li_Hotels.get(1).addChambre(2, 40, li_Hotels.get(1));
+		li_Hotels.get(1).addChambre(1, 20, li_Hotels.get(1));
 		
 		System.out.println("Creation d'une agence Agence_1.");
 		Agence agence = new Agence("Agence_1", li_Hotels);
@@ -89,12 +89,12 @@ public class Main
 			{
 				if (nbPlaces == 1) // Il reste une place
 				{
-					h.addChambre(1, 100, (int) (Math.random() * (200 - 20) + 20));
+					h.addChambre(1, 100, li.get(i));
 					nbPlaces--;
 				}
 				else
 				{
-					h.addChambre(2, 100, (int) (Math.random() * (200 - 20) + 20));
+					h.addChambre(2, 100, li.get(i)); //(int) (Math.random() * (200 - 20) + 20)
 					nbPlaces -= 2;
 				}
 			}
