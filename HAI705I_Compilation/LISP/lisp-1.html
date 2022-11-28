@@ -3,13 +3,13 @@
 <html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 </head>
 <body>
-<h1>TD de LISP numéro 1 et 2</h1>
+<h1>TD de LISP numï¿½ro 1 et 2</h1>
 <hr>
 <ol>
   <li> <b>lambda-expressions</b><br>
-évaluer les expressions suivantes en précisant les
+ï¿½valuer les expressions suivantes en prï¿½cisant les
 environnements au cours de
-l'évaluation
+l'ï¿½valuation
     <ul>
       <tt><li>((lambda (x) (+ (* 2 x) 3)) 4) = 11</li>
       <li>((lambda (x y) (* (+ x 2) (+ y 6))) 7 8) = 126</li>
@@ -19,7 +19,7 @@ l'évaluation
       <li>((lambda (x y z) (+ (* x y) (* y z))) 2 3 4) = 18</li>
       <li>((lambda (x y) (* x x y y)) 4) manque un argument le couz</li>
       <li>((lambda (x) (* x x 2)) 4 5) trop d'argument couzin tu forces</li>
-      <li>(lambda (x) (* x x 2)) il est où le x ??????<br>
+      <li>(lambda (x) (* x x 2)) il est oï¿½ le x ??????<br>
         <br>
       </li>
       </tt>
@@ -29,24 +29,24 @@ l'évaluation
     <ul>
       <li> <tt>(defun f (x) (+ 3 x)) <br>
 (defun g (v) (* 5 (f (+ v 2))))</tt> <br>
-évaluer <tt>(g 8) = 65</tt>
-        <p>qu'est ce que cela donne si f est définie par <br>
+ï¿½valuer <tt>(g 8) = 65</tt>
+        <p>qu'est ce que cela donne si f est dï¿½finie par <br>
         <tt>(defun f (x) (+ v x))</tt><br>
             [lolo] - la variable v n'a pas de valeurs<br>
 Comparer avec la lambda-expression correspondante qui
-précède. </p>
+prï¿½cï¿½de. </p>
       </li>
-      <li> définir quelques fonctions numériques
+      <li> dï¿½finir quelques fonctions numï¿½riques
 courantes
         <ul>
           <li><span style="font-family: monospace;">(fact n)</span> :
 factorielle d'un entier n = <tt>(defun fact (x) (if (eq x 0) 1 (* x (fact (- x 1)))))</tt> </li>
-            <li><span style="font-family: monospace;">(fibo n) </span> : fibonacci (suite définie par <tt>u(0)=u(1)=1</tt>
+            <li><span style="font-family: monospace;">(fibo n) </span> : fibonacci (suite dï¿½finie par <tt>u(0)=u(1)=1</tt>
 et <tt>u(n)=u(n-1)+u(n-2)</tt> ) = <tt><strong>(defun fibo (x) (if (or (eq x 0) (eq x 1)) x (+ (fibo(- x 1)) (fibo(- x 2)))))</strong></tt><br>
-donner une approximation de la complexité de votre
-définition<br>
+donner une approximation de la complexitï¿½ de votre
+dï¿½finition<br>
 sur la base du temps mis pour calculer <tt>(fibo 15)</tt>,
-déduire une
+dï¿½duire une
 estimation du temps pour <tt>(fibo 50)</tt>.<br>
             <br>
           </li>
@@ -58,12 +58,16 @@ estimation du temps pour <tt>(fibo 50)</tt>.<br>
     <ul>
       <li>comparer () et (()) et ((())) :
         <ul>
-          <li>comparer les <tt>CAR</tt> et <tt>CDR</tt> de ces listes
+          <li>comparer les <tt>CAR</tt> et <tt>CDR</tt> de ces listes<br>
+              <tt>CAR</tt> : Retourne le premier element d'une liste<br>
+              <tt>CDR</tt> : Retourne la queue de la liste<br>
+              <tt>CONS</tt> : Ajoute un element ï¿½ la fin d'une liste<br>
+              <tt>https://www.tutorialspoint.com/lisp/lisp_lists.html</tt>
           </li>
-          <li>comparer leurs représentations en doublets </li>
-          <li>et leurs représentations complètement
-pointées </li>
-          <li>que donne leur comparaison par les prédicats <tt>eq</tt>
+          <li>comparer leurs reprï¿½sentations en doublets </li>
+          <li>et leurs reprï¿½sentations complï¿½tement
+pointï¿½es </li>
+          <li>que donne leur comparaison par les prï¿½dicats <tt>eq</tt>
 et <tt>equal</tt> ?<br>
 et avec <tt>=</tt> ?</li>
         </ul>
@@ -71,64 +75,64 @@ et avec <tt>=</tt> ?</li>
       <li>de combien de cellules sont faites les listes : <br>
       </li>
       <ul>
-        <li><span style="font-family: monospace;"></span>(1 2 3 4) <br>
+        <li><span style="font-family: monospace;"></span> li1 = (1 2 3 4) <br>
         </li>
-        <li><span style="font-family: monospace;"></span>(1 (2 3) 4) <br>
+        <li><span style="font-family: monospace;"></span> li2 = (1 (2 3) 4) <br>
         </li>
-        <li><span style="font-family: monospace;"></span>(1 (2) (3) 4)
+        <li><span style="font-family: monospace;"></span> li3 = (1 (2) (3) 4)
           <ul>
             <tt> </tt>
           </ul>
-donner leur représentation par doublets et
-écrire leur représentation en paire pointée </li>
+            donner leur reprï¿½sentation par doublets et ï¿½crire leur reprï¿½sentation en paire pointï¿½e <br>
+            <tt>li1 = |1 . |2 . |3 . |4 . nil|||| </tt><br>
+            <tt>li2 = |1 .  </tt><br>
+            <tt>li3 = |1| -> |2| -> |3|</tt><br>
+        </li>
       </ul>
-      <li>qu'obtenez-vous avec les exemples précédents si
+      <li>qu'obtenez-vous avec les exemples prï¿½cï¿½dents si
 vous inversez partout les <span style="font-family: monospace;">CAR</span>
 et les <span style="font-family: monospace;">CDR</span> ?<br>
+          <tt><strong>(defun carToEnd (x) (cons (cdr x) (car x)))</strong></tt><br>
       </li>
-      <li>représentation par doublets pour les
-définitions des fonctions <tt>f</tt> et <tt>g</tt> qui
-précèdent.<br>
+      <li>reprï¿½sentation par doublets pour les
+dï¿½finitions des fonctions <tt>f</tt> et <tt>g</tt> qui
+prï¿½cï¿½dent.<br>
         <br>
       </li>
     </ul>
   </li>
   <hr> <li><b>fonctions sur les listes plates</b><br>
-On ne considère que les éléments de la liste,
-c'est-à-dire les <span style="font-family: monospace;">CAR</span>
+On ne considï¿½re que les ï¿½lï¿½ments de la liste,
+c'est-ï¿½-dire les <span style="font-family: monospace;">CAR</span>
 des cellules.<br>
 Ecrire les fonctions suivantes :
     <ul>
-      <li><tt>(member x l)</tt> qui retourne la sous-liste de la liste <tt>l</tt>
-commençant par l'élément <tt>x</tt>. </li>
-      <li><tt>(length l)</tt> qui retourne la longueur d'une liste
-plate, c'est-à-dire le nombre
-de cellules au premier niveau ; </li>
-      <li><tt>(last l)</tt> qui retourne la dernière cellule
-d'une liste plate
-(au premier niveau) ;<br>
-faites une version qui assure qu'un seul test est effectué
-à
-chaque pas de la récursion ;</li>
+      <li><tt>(member x l)</tt> qui retourne la sous-liste de la liste <tt>l</tt> commenï¿½ant par l'ï¿½lï¿½ment <tt>x</tt>. <br>
+      <strong><tt>(defun member (x l) (if (eq (car l) x) l (member x (cdr l))))</tt></strong></li>
+      <li><tt>(length l)</tt> qui retourne la longueur d'une liste plate, c'est-ï¿½-dire le nombre de cellules au premier niveau ; </li>
+      <li><tt>(last l)</tt> qui retourne la derniï¿½re cellule d'une liste plate (au premier niveau) ;<br>
+faites une version qui assure qu'un seul test est effectuï¿½
+ï¿½
+chaque pas de la rï¿½cursion ;</li>
       <li><span style="font-family: monospace;">(makelist n)</span> qui
-crée une liste de longueur n, contenant les entiers de 1
-à n, en ordre décroissant ;<br>
+crï¿½e une liste de longueur n, contenant les entiers de 1
+ï¿½ n, en ordre dï¿½croissant ;<br>
 et en ordre croissant ?<br>
       </li>
       <li><span style="font-family: monospace;">(copylist l)</span> qui
 retourne une copie au premier niveau de la liste <span style="font-family: monospace;">l</span> ;<br>
       </li>
-      <li><tt>(remove x l)</tt> qui retourne une copie de la liste <span style="font-family: monospace;">l </span>privée
+      <li><tt>(remove x l)</tt> qui retourne une copie de la liste <span style="font-family: monospace;">l </span>privï¿½e
 des
 occurrences de <span style="font-family: monospace;">x</span> ;<br>
-faire la même chose en n'enlevant que la première
+faire la mï¿½me chose en n'enlevant que la premiï¿½re
 occurrence de x ;<br>
       </li>
-      <li><tt>(append l1 l2)</tt> qui concatène 2 listes ;</li>
+      <li><tt>(append l1 l2)</tt> qui concatï¿½ne 2 listes ;</li>
       <li><span style="font-family: monospace;">(adjoin x l)</span> qui
-"ajoute" <span style="font-family: monospace;">x</span> à la
+"ajoute" <span style="font-family: monospace;">x</span> ï¿½ la
 liste <span style="font-family: monospace;">l</span> si <span style="font-family: monospace;">x</span> n'y est pas
-déjà ;<br>
+dï¿½jï¿½ ;<br>
 dans la fonction appelante, que devient <span style="font-family: monospace;">l</span> ?<br>
         <br>
       </li>
@@ -136,14 +140,14 @@ dans la fonction appelante, que devient <span style="font-family: monospace;">l<
   </li>
   <hr> <li><span style="font-weight: bold;">fonctions sur les arbres
 binaires<br>
-    </span>On considère que chaque cellule est un noeud dont les
+    </span>On considï¿½re que chaque cellule est un noeud dont les
     <span style="font-family: monospace;">CAR</span> et <span style="font-family: monospace;">CDR</span> sont les successeurs<span style="font-weight: bold;"><br>
     </span></li>
   <ul>
     <li><tt>(size tree)</tt> qui retourne la taille d'un arbre,
-c'est-à-dire son nombre de
-cellules total, à tous les niveaux ;<br>
-alternativement, définir la fonction de façon à
+c'est-ï¿½-dire son nombre de
+cellules total, ï¿½ tous les niveaux ;<br>
+alternativement, dï¿½finir la fonction de faï¿½on ï¿½
 calculer
 le nombre de feuilles, ou le nombre de feuilles non <span style="font-family: monospace;">NIL</span>.</li>
     <li><tt>(copytree tree)</tt> qui copie un arbre ; </li>
@@ -156,40 +160,40 @@ qui retourne la liste des feuilles de l'arbre<br>
     </li>
   </ul>
   <hr style="width: 100%; height: 2px;"><li><b>tests
-d'égalité</b>
+d'ï¿½galitï¿½</b>
     <ul>
-      <li>comparer les différentes fonctions de tests
-d'égalité
+      <li>comparer les diffï¿½rentes fonctions de tests
+d'ï¿½galitï¿½
 (<tt>=</tt>, <tt>eq</tt>, <tt>eql</tt>, <tt>equal</tt>) sur les
 nombres, en
 faisant varier l'ordre de grandeur de <tt>n</tt> dans <tt>(= (fact n)
 (fact n))</tt>. </li>
-      <li>proposer une définition de <tt>equal</tt>
-correspondant aux spécifications.<br>
+      <li>proposer une dï¿½finition de <tt>equal</tt>
+correspondant aux spï¿½cifications.<br>
         <br>
       </li>
     </ul>
     <hr> </li>
-  <li><b>récursion terminale et enveloppée</b>
+  <li><b>rï¿½cursion terminale et enveloppï¿½e</b>
     <ul>
-      <li>Les diverses fonctions qui précèdent sont-elles
+      <li>Les diverses fonctions qui prï¿½cï¿½dent sont-elles
 en
-récursion terminale ou enveloppée ? </li>
+rï¿½cursion terminale ou enveloppï¿½e ? </li>
       <li>Dans ce dernier cas, en donner une version en
-récursion
+rï¿½cursion
 terminale, par exemple en appliquant la transformation du cours ?</li>
       <li>dans le cas de <span style="font-family: monospace;">copylist
         </span>et<span style="font-family: monospace;"> makelist,</span>
-que calculent leurs versions récursives terminales ?</li>
-      <li>appliquée aux récursions doubles, la
-transformation du cours ne donne pas une récursion terminale sur
-les deux appels récursifs : trouver une autre solution pour <span style="font-family: monospace;">fibonacci</span> en récursion
-terminale ; quelle est la complexité de cette nouvelle
-définition ?<br>
+que calculent leurs versions rï¿½cursives terminales ?</li>
+      <li>appliquï¿½e aux rï¿½cursions doubles, la
+transformation du cours ne donne pas une rï¿½cursion terminale sur
+les deux appels rï¿½cursifs : trouver une autre solution pour <span style="font-family: monospace;">fibonacci</span> en rï¿½cursion
+terminale ; quelle est la complexitï¿½ de cette nouvelle
+dï¿½finition ?<br>
       </li>
-      <li>pour les autres récursions doubles (fonctions sur les
-arbres par ex.) la transformation du cours donne une récursion
-partiellement terminale : appliquer à <span style="font-family: monospace;">size</span>. <br>
+      <li>pour les autres rï¿½cursions doubles (fonctions sur les
+arbres par ex.) la transformation du cours donne une rï¿½cursion
+partiellement terminale : appliquer ï¿½ <span style="font-family: monospace;">size</span>. <br>
 qu'est-ce que cela donne pour <tt>copytree</tt> et <span style="font-family: monospace;">tree-leaves</span> ? </li>
     </ul>
     <hr></li>
