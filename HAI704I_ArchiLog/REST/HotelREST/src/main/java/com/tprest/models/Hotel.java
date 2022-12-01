@@ -18,8 +18,8 @@ public class Hotel
 	private String adresse;
 	private int nbEtoiles;
 	
-	private ArrayList<Chambre> li_Chambres;
-	private int nbPlaces;
+	//private ArrayList<Chambre> li_Chambres;
+	//private int nbPlaces;
 	
 	/* CONSTRUCTORS */
 	public Hotel()
@@ -33,8 +33,8 @@ public class Hotel
 		this.adresse = adr;
 		this.nbEtoiles = nbEtoiles;
 		
-		this.li_Chambres = new ArrayList<Chambre>();
-		this.nbPlaces = 0;
+		//this.li_Chambres = new ArrayList<Chambre>();
+		//this.nbPlaces = 0;
 	}
 	
 	/* GET - SET */
@@ -47,7 +47,8 @@ public class Hotel
 	{
 		return id;
 	}
-
+	
+	/*
 	public void setNbPlaces(int nbPlaces)
 	{
 		this.nbPlaces = nbPlaces;
@@ -57,6 +58,7 @@ public class Hotel
 	{
 		return nbPlaces;
 	}
+	*/
 	
 	public String getNom()
 	{
@@ -88,6 +90,7 @@ public class Hotel
 		this.nbEtoiles = nbEtoiles;
 	}
 	
+	/*
 	public void setChambre(ArrayList<Chambre> li_Chambres)
 	{
 		this.li_Chambres = li_Chambres;
@@ -97,13 +100,13 @@ public class Hotel
 	{
 		return li_Chambres;
 	}
-	
+	*/
 	
 	
 	@Override
 	public int hashCode()
 	{
-		return Objects.hash(adresse, li_Chambres, nbEtoiles, nbPlaces, nom);
+		return Objects.hash(adresse, /*li_Chambres,*/ nbEtoiles,/* nbPlaces,*/ nom);
 	}
 
 	@Override
@@ -120,23 +123,33 @@ public class Hotel
 		
 		Hotel other = (Hotel) obj;
 		
-		return Objects.equals(adresse, other.adresse) && Objects.equals(li_Chambres, other.li_Chambres)
-				&& nbEtoiles == other.nbEtoiles && nbPlaces == other.nbPlaces && Objects.equals(nom, other.nom);
+		return Objects.equals(adresse, other.adresse) /*&& Objects.equals(li_Chambres, other.li_Chambres)*/
+				&& nbEtoiles == other.nbEtoiles && /*nbPlaces == other.nbPlaces && */Objects.equals(nom, other.nom);
 	}
 
+	/*
 	@Override
 	public String toString()
 	{
 		return "Hotel [nom=" + nom + ", adresse=" + adresse + ", nbEtoiles=" + nbEtoiles + ", li_Chambres="
 				+ li_Chambres + ", nbPlaces=" + nbPlaces + "]";
 	}
+	*/
+	
+	@Override
+	public String toString()
+	{
+		return "Hotel [nom=" + nom + ", adresse=" + adresse + ", nbEtoiles=" + nbEtoiles /*+ ", nbPlaces=" + nbPlaces */+ "]";
+	}
 	
 	/* METHODS */
+	/*
 	public void addChambre(Integer nbLits, Integer prix, Hotel h)
 	{
 		Chambre c = new Chambre(nbLits, prix, h);
 		this.li_Chambres.add(c);
 		nbPlaces+=nbLits;
 	}
+	*/
 	
 }
