@@ -235,7 +235,6 @@ int main(int argc, char *argv[])
     // pidMain = getpid();
     // int tabPid[nbNodes];
 
-    // LE SERVER ATTEND DE RECEVOIR LES ID ET ADRESSE DES PROCESSUS
     struct sockaddr_in tabSock[nbNodes];
 
     /* Etape 1 : créer une socket */   
@@ -286,7 +285,72 @@ int main(int argc, char *argv[])
 
         printf("SERVER : Message reçu : %d \n", idNodeReceive);
         tabSock[idNodeReceive] = adNode;
+
+
         compt++;
+    }
+
+    compt = 0;
+
+    /* Etape 5 : Envoyer les infos des voisins aux nodes */
+
+    while (compt < nbNodes)
+    {
+        /* Etape 5.1 : Envoyer le nb de 1 sur la colonne */
+        printf("SERVER : J'envoi  le nb de connexions entrante\n");
+        int nbIn, nbOut = 0;
+
+        for (int i=0; i<nbNodes; i++)
+        {
+            if (tabNodes[i][compt] == 1)
+            {
+                nbIn++;
+            }
+        }
+
+        int snd = sendto(ds, &nbIn, sizeof(int), 0, (struct sockaddr*) &tabSock[compt], sizeof(struct sockaddr_in));
+
+        if (snd < 0)
+        {
+            printf("SERVEUR : \n");
+            perror("erreur d'envoi de nbIn\n");
+            exit(1);
+        }
+
+        printf("SERVEUR : Envoi reussi de nbIn\n");
+
+
+        /* Etape 5.2 : Envoyer le nb de 1 sur la ligne */
+        printf("SERVER : J'envoi  le nb de connexions sortante\n");
+
+        for (int i=0; i<nbNodes; i++)
+        {
+            if (tabNodes[compt][i] == 1)
+            {
+                nbOut++;
+            }
+        }
+
+        snd = sendto(ds, &nbOut, sizeof(int), 0, (struct sockaddr*) &tabSock[compt], sizeof(struct sockaddr_in));
+
+        if (snd < 0)
+        {
+            printf("SERVEUR : \n");
+            perror("erreur d'envoi de nbOut\n");
+            exit(1);
+        }
+
+        /* Etape 5.3 : Envoyer adresse puis port de chaque ligne */
+        for(int i=0; i<nbOut; i++)
+        {
+            /* Etape 5.3.1 : Envoyer l'adresse */
+            printf("SERVER : J'envoi  les adresses de chaques \n");
+
+            /* Etape 5.3.2 : Envoyer le port */
+            printf("SERVER : J'envoi  les adresses de chaques \n");
+        }
+        
+            
     }
 
     close(ds);
