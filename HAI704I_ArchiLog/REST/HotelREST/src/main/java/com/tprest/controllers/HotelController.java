@@ -41,8 +41,7 @@ public class HotelController
 	public Hotel getHotelById(@PathVariable long id) throws HotelNotFoundException
 	{
 		return repository.findById(id)
-		.orElseThrow(() -> new HotelNotFoundException(
-		"Error: could not find hotel with ID " + id));
+		.orElseThrow(() -> new HotelNotFoundException("Error: could not find hotel with ID " + id));
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
@@ -57,22 +56,22 @@ public class HotelController
 	{
 		return repository.findById(id)
 				
-		.map(hotel -> {
-		hotel.setNom(newHotel.getNom());
-		hotel.setAdresse(newHotel.getAdresse());
-		hotel.setNbEtoiles(newHotel.getNbEtoiles());
-		return repository.save(hotel);
-		})
-		.orElseGet(() -> repository.save(newHotel));
+			.map(hotel -> {
+			hotel.setNom(newHotel.getNom());
+			hotel.setAdresse(newHotel.getAdresse());
+			hotel.setNbEtoiles(newHotel.getNbEtoiles());
+			return repository.save(hotel);
+			})
+			.orElseGet(() -> repository.save(newHotel));
 	}
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	@DeleteMapping(uri+"/hotels/{id}")
 	public void deleteEmployee(@PathVariable long id) throws HotelNotFoundException
 	{
-		Hotel employee = repository.findById(id)
+		Hotel hotel = repository.findById(id)
 				
 		.orElseThrow(() -> new HotelNotFoundException(
 		"Error: could not find employee with ID " + id));
-		repository.delete(employee);
+		repository.delete(hotel);
 	}
 }

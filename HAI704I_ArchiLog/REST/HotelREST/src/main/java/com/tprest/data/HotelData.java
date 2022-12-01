@@ -22,6 +22,7 @@ public class HotelData
 		{
 			logger.info("Preloading database with " + repository.save(
 			new Hotel("Mercure", "3 rue kylian mbappe", 3)));
+			
 			logger.info("Preloading database with " + repository.save(
 			new Hotel("Ibis", "5 boulevard zizou", 2)));
 		};
