@@ -1,0 +1,29 @@
+INIT.c :
+  - lance un terminal pour le serveur avec : port serveur et le fichier
+  - lance autant de terminal que de nodes avec : une adresse IP serveur,
+  un port serveur, un port client et un id
+
+SERVER.c :
+  - Parse le fichier dans une matrice avec des 1 pour représenter un lien, 0 sinon
+  - Creer une socket
+
+  - Pour chaques nodes :
+    - Recoit l'id et on stocke la socket
+    - Envoi le nombre de receptions
+    - Envoi le nombre d'envois
+
+    - Pour chaques envoi :
+      - Envoi la socket du destinataire
+
+NODE.c :
+  - Creer une socket
+  - Envoi l'id au serveur
+  - Recoit le nombre de receptions
+  - Recoit le nombre d'envois
+
+  - Pour chaques envoi :
+    - Recoit la socket du destinataire
+
+*SUITE DE NODE* : Creer un thread qui va permetre a un node d'envoyer
+ça socket à ses voisins en fonction du nombre d'envois tandis que le
+processus principal attend en fonction du nombre de receptions. 
