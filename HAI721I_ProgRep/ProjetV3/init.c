@@ -11,6 +11,7 @@
 #define FILENAME_SIZE 1024
 #define MAX_LINE 2048
 int **tabNodes;
+int portNode = 2600;
 
 int main(int argc, char *argv[])
 {
@@ -25,24 +26,26 @@ int main(int argc, char *argv[])
     int exit_status;
     char buf[256];
 
-    if (fork() == 0)
+    if (fork() == 0) // le fils créé lance les node.c
     {
         sleep(1);
 
-        // CREATION NODES
+        // CREATION NODES (ATTENTION 3 BRUT ICI)
         for(int i = 0; i<3; i++)
         {
-            snprintf(buf, sizeof(buf), "./node 127.0.0.1 %d %d &",portServ, i);
+            snprintf(buf, sizeof(buf), "./node 127.0.0.1 %d %d %d &",portServ, portNode, i);
             exit_status = system(buf);
 
-            if(exit_status==-1)
+            if(exit_status == -1)
             {
                 perror("Failed opening terminal node\n");
                 exit(1);
             }
+
+            portNode++;
         }
     }
-    else 
+    else  // et le pere lance le server.c
     {
         // CREATION SERVER
         snprintf(buf, sizeof(buf), "./server %d %s &",portServ, argv[2]);
@@ -54,5 +57,7 @@ int main(int argc, char *argv[])
             exit(1);
         }
     }
-    
+
+    printf("INITIALISATION : FIN");
+    return 0;
 }

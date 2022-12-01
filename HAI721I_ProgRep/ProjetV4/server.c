@@ -208,7 +208,7 @@ int main(int argc, char *argv[])
         {
             int firstNode;
             int secondNode;
-            int tabNodes[nbLink][2]; // Chaques cases de tabNodes représentent un link
+            //int tabNodes[nbLink][2]; // Chaques cases de tabNodes représentent un link
 
             char *buff2 = strtok(buffer, " ");
 
@@ -273,7 +273,7 @@ int main(int argc, char *argv[])
     {
         int idNodeReceive;
 
-        printf("SERVER : J'attend une connexion \n");
+        printf("SERVER : J'attend encore %d connexions \n", nbNodes-compt);
         int rec = recvfrom(ds, &idNodeReceive, sizeof(int), 0, (struct sockaddr*) &adNode, &lgAdr);
 
         if (rec < 0)
@@ -296,7 +296,7 @@ int main(int argc, char *argv[])
     while (compt < nbNodes)
     {
         /* Etape 5.1 : Envoyer le nb de 1 sur la colonne (nb de recus)*/
-        printf("SERVER : J'envoi  le nb de connexions entrante\n");
+        printf("SERVER : J'envoi le nb d'écoute à %d\n", compt);
         int nbIn = 0;
         int nbOut = 0;
 
@@ -317,11 +317,11 @@ int main(int argc, char *argv[])
             exit(1);
         }
 
-        printf("SERVER : Envoi reussi de nbIn\n");
+        printf("SERVER : Envoi reussi de nbIn à %d \n", compt);
 
 
         /* Etape 5.2 : Envoyer le nb de 1 sur la ligne */
-        printf("SERVER : J'envoi  le nb de connexions sortante\n");
+        printf("SERVER : J'envoi le nb de connexions à %d \n", compt);
 
         for (int i=0; i<nbNodes; i++)
         {

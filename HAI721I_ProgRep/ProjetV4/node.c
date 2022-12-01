@@ -47,7 +47,7 @@ int main(int argc, char *argv[])
     adServer.sin_addr.s_addr = inet_addr(argv[1]);
     adServer.sin_port = htons((short)atoi(argv[2]));
 
-    printf("NODE %d : Je vais envoyer %d au serveur \n", id, id);
+    printf("NODE %d : Je vais envoyer mon id %d au serveur \n", id, id);
     int snd = sendto(ds, &id, sizeof(int), 0, (struct sockaddr*) &adServer, sizeof(struct sockaddr_in));
 
     if (snd < 0)
@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    printf("NODE %d : Message reçu : %d \n", id, nbSocksIn);
+    printf("NODE %d : J'ai %d nodes à écouter \n", id, nbSocksIn);
 
     /* J'attend de recevoir le nb de sortis */
 
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
         exit(1);
     }
 
-    printf("NODE %d : Message reçu : %d \n", id, nbSocksOut);
+    printf("NODE %d : J'ai %d nodes à contacter \n", id, nbSocksOut);
 
     struct sockaddr_in tabSocksOut[nbSocksOut];
 
