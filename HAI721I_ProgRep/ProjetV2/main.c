@@ -255,22 +255,6 @@ int main(int argc, char *argv[])
 
     printf("%d à finis avec comme id = %d \n", getpid(), idNode);
 
-    // CREATION TAB PID
-    /*
-    if (getpid() == pidMain)
-    {
-        int cmpt = pidMain+1;
-
-        for(int i=0; i<nbNodes; i++)
-        {
-            tabPid[i] = cmpt;
-            cmpt++;
-        }
-
-        printTabInt(tabPid, nbNodes);
-    }
-    */
-
     // LE MAIN ATTEND DE RECEVOIR LES ID ET ADRESSE DES PROCESSUS
     if (getpid() == pidMain)
     {

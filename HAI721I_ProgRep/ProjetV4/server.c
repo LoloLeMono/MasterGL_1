@@ -285,7 +285,6 @@ int main(int argc, char *argv[])
         printf("SERVER : Message reçu : %d \n", idNodeReceive);
         tabSock[idNodeReceive] = adNode;
 
-
         compt++;
     }
 

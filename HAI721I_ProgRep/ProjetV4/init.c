@@ -53,7 +53,7 @@ int main(int argc, char *argv[])
         portClient++;
     }
 
-    printf("INITIALISATION : FIN");
+    printf("INITIALISATION : FIN \n");
 
     return 0;
 }
