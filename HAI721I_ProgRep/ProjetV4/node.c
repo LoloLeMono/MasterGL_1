@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 {
     if (argc != 5)
     {
-        printf("Utilisation : %s ip_node port_serveur port_client_reference id\n", argv[0]);
+        printf("Utilisation : %s ip_server port_serveur port_client_reference id\n", argv[0]);
         exit(1);
     }
 
