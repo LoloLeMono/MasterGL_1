@@ -1,0 +1,43 @@
+Models are those components of the system application that actually do the work (simulation of the
+application domain). They are kept quite distinct from views.
+which display aspects of the models. Conrrallrrs are used to
+send messages to the model, and provide the interface between
+the model with its associated views and the interactive user in-
+terface devices (e.g., keyboard. mouse)
+
+Question 1.
+
+MVC : Séparations 3 partie
+	- Model : Domaine application (partie data)
+	- View : Affichage de l'état de l'application
+	- Controller : Interaction entre utilisateur et vue
+
+MVC permet de séparer ces differentes taches pour plus d'accessibilité
+
+Le modele n'a jamais connaissance de sa vue et de son controleur -> plusieurs vue/controleurs pour un modèle
+
+Question 2.
+
+Observer : Quand l'etat d'un objet peut influer sur l'etat d'un autre sans que le premier n'ait à s'en soucier
+MVC utilise Observer
+
+Le modele Observable permet à chaques parties du MVC de communiquer entre elles
+
+Exemple observateur : radio-diffusion (celui qui parle ne se soucis pas de ceux qui écoutent)
+
+Question 3.
+
+Les classes Model, View et Controller permettent d'implementer l'architecture MVC
+
+Question 4.
+
+MV_Association permet a chaque modèle de ne pas avoir connaissance de ses vues
+
+Question 5.
+
+Un model est un observé
+
+Question 6.
+
+Les vues observent le modèle
+Les controllers observent les boutons
