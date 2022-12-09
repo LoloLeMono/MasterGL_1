@@ -1,3 +1,4 @@
+#include <netinet/in.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -110,11 +111,89 @@ int main(int argc, char *argv[])
             perror(bufError);
             exit(1);
         }
+
+        printf("NODE %d : Je recois l'adresse de %d \n", id, htons(tabSocksOut[i].sin_port));
     }
 
-    /* CREATION THREAD POUR RECEVOIR */
-
     close(ds);
+
+
+
+    /* INITIALISATION TERMINE, DEBUT COMMUNICATION NODES */
+
+
+
+    int dsTCP = socket(PF_INET, SOCK_STREAM, 0);
+    
+    if (bind(dsTCP, (struct sockaddr*)&ad, sizeof(ad)) < 0)
+    {
+        snprintf(bufError, sizeof(bufError), "NODE %d : Erreur de nommage de la socket TCP In\n", id);
+        perror(bufError);
+        exit(1);
+    }
+
+    if (listen(dsTCP, 10) < 0)
+    {
+        perror("Erreur listen");
+        exit(1);
+    }
+
+    //int tabDs[nbSocksOut];
+
+    // BOUCLE DES CONNEXIONS
+    for (int i=0; i<nbSocksOut; i++)
+    {
+        //tabDs[i] = socket(PF_INET, SOCK_STREAM, 0);
+
+        int dsBuf = socket(PF_INET, SOCK_STREAM, 0);
+
+        if (bind(dsBuf, (struct sockaddr*)&tabSocksOut[i], sizeof(tabSocksOut[i])) < 0)
+        {
+            snprintf(bufError, sizeof(bufError), "NODE %d : Erreur de nommage de la socket TCP Out\n", id);
+            perror(bufError);
+            exit(1);
+        }
+
+        struct sockaddr_in add = tabSocksOut[i];
+
+        int res = connect(dsBuf, (struct sockaddr*) &add, sizeof(add));
+        if (res == -1)
+        {
+            perror("Probleme connect");
+            exit(1);
+        }
+        /*
+        if(connect(tabDs[i], (struct sockaddr*) &tabSocksOut[i], lgAdr) < 0)
+        {
+            snprintf(bufError, sizeof(bufError), "NODE %d : Erreur de de connexion de la socket TCP \n", id);
+            perror(bufError);
+            exit(1);
+        }
+        */
+
+        printf("NODE %d : Je me connecte à %d \n", i, htons(tabSocksOut[i].sin_port));
+        close(dsBuf);
+    }
+
+    printf("NODE %d : Fin de connexions aux voisins In \n", id);
+
+    // BOUCLE DES ACCEPTS
+    struct sockaddr_in tabAdV[nbSocksIn];
+    socklen_t lg = sizeof(struct sockaddr_in);
+
+    for (int i=0; i<nbSocksIn; i++)
+    {
+        if (accept(dsTCP, (struct sockaddr*) &tabAdV[i], &lg) < 0)
+        {
+            snprintf(bufError, sizeof(bufError), "NODE %d : Erreur accept de la socket TCP \n", id);
+            perror(bufError);
+            exit(1);
+        }
+
+        printf("NODE %d : J'accepte la connexion de %d \n", id, htons(tabAdV[i].sin_port));
+    }
+
+    close(dsTCP);
 
     printf("NODE %d : FIN \n", id);
 
