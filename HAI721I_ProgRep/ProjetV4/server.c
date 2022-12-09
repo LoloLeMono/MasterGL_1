@@ -362,7 +362,22 @@ int main(int argc, char *argv[])
             
     }
 
-    close(ds);
+    close(ds); // ferme la socket UDP
+
+    int dsTCP = socket(PF_INET, SOCK_STREAM, 0);
+
+    struct sockaddr_in adTCP;
+    adTCP.sin_family = AF_INET;
+    adTCP.sin_addr.s_addr = INADDR_ANY;
+    adTCP.sin_port = htons(atoi(argv[1]));
+    
+    bind(dsTCP, (struct sockaddr*)&adTCP, sizeof(adTCP));
+
+    listen(dsTCP, 7);
+    struct sockaddr_in adV ;
+    socklen_t lg = sizeof(struct sockaddr_in) ;
+    dSC = accept(dS, (struct sockaddr*) &aC,&lg) ;
+
     free(tabNodes);
 
     printf("SERVER : FIN \n");
