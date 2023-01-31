@@ -2,7 +2,7 @@
 
 (defun eval-li (expr env)
 	;:LIT, :VAR, :SET-VAR, :IF, :CALL, :MCALL, :LET, :PROGN , :UNKNOWN
-	(ecase (car expr)
+	(ecase (car expr) ; CASE compare la tête de expr avec les differents type reconnus pour continuer
 		(:LIT (cdr expr))
 		(:VAR
 			(aref env
