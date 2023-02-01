@@ -16,6 +16,12 @@
   (eql (car exp) inst)
 )
 
+(defun lirelisp (nomfichier)
+  (let ((fichier (open nomfichier)))
+      (print (read fichier))
+    )
+  )
+
 ;;*************** DIFFERENTS CAS ***************
 
 ;; Compilation de littéraux.
