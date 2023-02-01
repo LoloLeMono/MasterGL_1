@@ -1,0 +1,6 @@
+1 - Charger la fonction run, le compilateur et la vm
+(load "main.lisp")
+
+2 - Definir la fonction clisp fibo, la compiler et la charger dans la vm,
+    Puis compiler et charge (fibo 10)
+(run 'vm '(fibo 10) '(defun fibo (n) (if (< n 2) n (+ (fibo (- n 1)) (fibo (- n 2)))))
