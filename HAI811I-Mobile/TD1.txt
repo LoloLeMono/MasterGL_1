@@ -192,3 +192,5 @@ Remplacer OnClickListener par OnLongClickListener, si on veut les 2 modes, on le
 EXERCICE 5
 1)
 Le message sera afficher seulement quand on cliquera sur le dernier bouton.
+
+Prof TP: quentin.capdepon@berger-levrault.com
