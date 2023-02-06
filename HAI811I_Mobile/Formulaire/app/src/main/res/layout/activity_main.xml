@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:padding="16dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/form_nom"/>
+
+    <EditText
+        android:id="@+id/editText_prenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ex : Laurent"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/form_age" />
+
+    <EditText
+        android:id="@+id/editText_age"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ex : 25"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/form_competence"/>
+
+    <EditText
+        android:id="@+id/editText_competences"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ex : Rapper"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/form_telephone"/>
+
+    <EditText
+        android:id="@+id/editText_telephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="ex : 0601089564"/>
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/button_envoyer"
+        android:layout_marginTop="16dp"/>
+
+</LinearLayout>

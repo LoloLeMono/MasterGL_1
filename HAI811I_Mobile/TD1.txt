@@ -2,43 +2,6 @@ TD1 :
 
 EXERCICE 1
 
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmIns:android="http://schemas,android,com/ank/res/android"
-    package="com. javacodegeeks.examples.androidViewPagerExample" >
-
-    <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher" es android:label="@string/app_name"
-        android:theme="@style/AppTheme">
-        <activity
-        android:name=".AndroidViewPagerExample"
-        android:label="@string/app_name" >
-
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-    </application>
-
-</manifest>
-
-JAVA : Logique métier
-     
-import android.widget.TextView;
-public class HelloAndroid extends Activity
-{
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        TextView tv = new TextView(this);
-        tv.setText("Hello, Android");
-        setContentView(tv);
-    }
-}
-
 2)
 Il faut créer un layout qui englobe les 2 view (la saisie et l'affichage du text) *
 
@@ -56,34 +19,6 @@ setContentView(ll); ***
 
 ////////////////////////////////////////////////////////////////////////////
 
-
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:orientation="vertical" >
-<TextView android:id="@+id/text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hello, I am a TextView" />
-</LinearLayout>
-
-JAVA : Logique métier
-
-package com.android.helloandroid;
-import android.app.Activity;
-import android.os.Bundle;
-import android.widget.TextView;
-
-public class HelloAndroid extends Activity
-{
-    @Override
-    public void onCreate(Bundle savedInstanceState)
-    {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_file_name);
-    }
-}
 
 3)
 Dans le premier exercice, on défini la vue dans le code directement alors qu'içi, on la défini dans un fichier ressource.
