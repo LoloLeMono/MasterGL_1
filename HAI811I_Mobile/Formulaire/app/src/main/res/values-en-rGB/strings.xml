@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Form</string>
-    <string name="form_nom">Name :</string>
-    <string name="form_age">Age :</string>
+    <string name="form_nom">First Name :</string>
+    <string name="form_age">Birthday :</string>
     <string name="form_competence">Field of competence :</string>
     <string name="form_telephone">Phone :</string>
     <string name="button_envoyer">Send</string>
+    <string name="form_prenom">Last Name :</string>
 </resources>

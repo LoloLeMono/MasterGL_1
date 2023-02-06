@@ -1,19 +1,9 @@
 <resources>
     <string name="app_name">Formulaire</string>
+    <string name="form_prenom">Prenom :</string>
     <string name="form_nom">Nom :</string>
-    <string name="form_age">Age :</string>
+    <string name="form_age">Date de naissance :</string>
     <string name="form_competence">Domaine de competence :</string>
     <string name="form_telephone">Telephone :</string>
     <string name="button_envoyer">Envoyer</string>
 </resources>
-
-<!-- ENGLISH
-<resources>
-    <string name="app_name">Form</string>
-    <string name="form_nom">Name :</string>
-    <string name="form_age">Age :</string>
-    <string name="form_competence">Field of competence :</string>
-    <string name="form_telephone">Phone :</string>
-    <string name="button_envoyer">Send</string>
-</resources>
--->

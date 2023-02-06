@@ -10,13 +10,25 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/form_nom"/>
+        android:text="@string/form_prenom"/>
 
     <EditText
         android:id="@+id/editText_prenom"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ex : Laurent"/>
+        android:hint="Marshall"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/form_nom"/>
+
+    <EditText
+        android:id="@+id/editText_nom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Bruce-Mathers"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -28,7 +40,7 @@
         android:id="@+id/editText_age"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ex : 25"/>
+        android:hint="dd/MM/yyyy"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -40,7 +52,7 @@
         android:id="@+id/editText_competences"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ex : Rapper"/>
+        android:hint="Rapper"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -52,7 +64,7 @@
         android:id="@+id/editText_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="ex : 0601089564"/>
+        android:hint="XX XX XX XX XX"/>
 
     <Button
         android:id="@+id/button"
