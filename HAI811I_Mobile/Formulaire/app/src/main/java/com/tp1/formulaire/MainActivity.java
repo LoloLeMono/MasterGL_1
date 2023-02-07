@@ -1,8 +1,13 @@
 package com.tp1.formulaire;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -12,6 +17,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
 {
+    Button sendButton;
+    AlertDialog.Builder builder;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -19,13 +26,52 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ((Button) findViewById(R.id.button)).
-                setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        Toast.makeText(MainActivity.this, "Bouton cliqué !", Toast.LENGTH_LONG).show();
-                    }
-                });
+        sendButton = findViewById(R.id.button);
+        builder = new AlertDialog.Builder(this);
+        sendButton.setOnClickListener(v -> {
+            builder.setTitle(R.string.dialog_title)
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            //dialog.cancel();
+                            String firstName = ( (EditText) findViewById(R.id.editText_prenom)).getText().toString();
+                            String lastName = ( (EditText) findViewById(R.id.editText_nom)).getText().toString();
+                            String birthday = ( (EditText) findViewById(R.id.editText_age)).getText().toString();
+                            String skillField = ( (EditText) findViewById(R.id.editText_competences)).getText().toString();
+                            String phone = ( (EditText) findViewById(R.id.editText_telephone)).getText().toString();
+
+                            Intent intent = new Intent (MainActivity.this, ResultActivity.class);
+                            Bundle bundle = new Bundle();
+
+                            bundle.putString("firstName", firstName);
+                            bundle.putString("lastName", lastName);
+                            bundle.putString("birthday", birthday);
+                            bundle.putString("skillField", skillField);
+                            bundle.putString("phone", phone);
+
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+
+                            Toast.makeText(getApplicationContext(),"Vous avez choisi oui",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener()
+                    {
+                        public void onClick(DialogInterface dialog, int id)
+                        {
+                            dialog.cancel();
+                            Toast.makeText(getApplicationContext(),"Vous avez choisi non",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+            //Creating dialog box
+            AlertDialog alert = builder.create();
+            alert.show();
+
+        });
 
         /*
         // EXO 3 : DANS LA LOGIQUE METIER

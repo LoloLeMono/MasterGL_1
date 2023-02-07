@@ -7,4 +7,5 @@
     <string name="form_telephone">Phone :</string>
     <string name="button_envoyer">Send</string>
     <string name="form_prenom">Last Name :</string>
+    <string name="dialog_title">Confirm ?</string>
 </resources>

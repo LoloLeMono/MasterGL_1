@@ -6,4 +6,6 @@
     <string name="form_competence">Domaine de competence :</string>
     <string name="form_telephone">Telephone :</string>
     <string name="button_envoyer">Envoyer</string>
+
+    <string name="dialog_title">Confirmer l\'envoi ?</string>
 </resources>

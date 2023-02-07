@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="@string/form_prenom"/>
+        android:text="Prénom"/>
 
     <EditText
         android:id="@+id/editText_prenom"
