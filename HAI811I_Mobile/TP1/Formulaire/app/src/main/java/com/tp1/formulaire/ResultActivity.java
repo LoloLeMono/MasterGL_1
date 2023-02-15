@@ -36,7 +36,7 @@ public class ResultActivity extends AppCompatActivity
         TextView textViewBirthdayXML = findViewById(R.id.resultText_age);
         textViewBirthdayXML.setText(birthday);
 
-        String competence = getIntent().getStringExtra("competence");
+        String competence = getIntent().getStringExtra("skillField");
         TextView textViewCompetenceXML = findViewById(R.id.resultText_competence);
         textViewCompetenceXML.setText(competence);
 
@@ -51,6 +51,9 @@ public class ResultActivity extends AppCompatActivity
                     public void onClick(View v)
                     {
                         Toast.makeText(ResultActivity.this, "Bouton cliqué !", Toast.LENGTH_LONG).show();
+
+                        Intent intent = new Intent (ResultActivity.this, MainActivity.class);
+                        startActivity(intent);
                     }
                 });
 

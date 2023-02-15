@@ -8,4 +8,5 @@
     <string name="button_envoyer">Envoyer</string>
 
     <string name="dialog_title">Confirmer l\'envoi ?</string>
+    <string name="call">Apeller</string>
 </resources>
