@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Entrez votre itinéraire :"
+        android:textSize="24sp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="16dp"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/train"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"/>
+
+    <!-- EditText pour la ville de départ -->
+    <EditText
+        android:id="@+id/departureEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Départ"
+        android:inputType="text"/>
+
+    <!-- EditText pour la ville d'arrivée -->
+    <EditText
+        android:id="@+id/arrivalEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Arriver"
+        android:inputType="text"/>
+
+    <!-- Bouton de recherche -->
+    <Button
+        android:id="@+id/search_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rechercher"
+        android:layout_marginTop="16dp"
+        android:layout_gravity="center_horizontal"/>
+
+    <!-- Texte de résultats -->
+    <TextView
+        android:id="@+id/results_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Résultats :"
+        android:textSize="18sp"
+        android:layout_below="@id/search_button"
+        android:layout_marginTop="24dp"
+        android:layout_marginStart="16dp"/>
+
+    <!-- Liste de résultats -->
+    <ListView
+        android:id="@+id/trains_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/results_textview"
+        android:layout_marginTop="8dp"/>
+
+</LinearLayout>
