@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Prénom"/>
+        android:text="@string/form_prenom"/>
 
     <EditText
         android:id="@+id/editText_prenom"
@@ -64,6 +64,7 @@
         android:id="@+id/editText_telephone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:inputType="number"
         android:hint="XX XX XX XX XX"/>
 
     <Button

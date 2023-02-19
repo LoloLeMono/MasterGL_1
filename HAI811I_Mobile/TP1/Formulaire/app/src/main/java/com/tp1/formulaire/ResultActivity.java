@@ -57,5 +57,19 @@ public class ResultActivity extends AppCompatActivity
                     }
                 });
 
+        (findViewById(R.id.button_validate)).
+                setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent (ResultActivity.this, activity_call.class);
+
+                        Bundle bundle = new Bundle();
+                        bundle.putString("phone", phone);
+                        intent.putExtras(bundle);
+
+                        startActivity(intent);
+                    }
+                });
     }
 }
