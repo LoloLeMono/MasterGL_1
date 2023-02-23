@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
                 float z = event.values[2];
                 Log.d("Accéléromètre", "x = " + x + ", y = " + y + ", z = " + z);
 
-                if (x < 3)
+                if (x<0.33 && y<0.33 && z<0.33)
                 {
                     ln.setBackgroundColor(Color.GREEN);
-                } else if (x > 6)
+                } else if (x>0.66 && y>0.66 && z>0.66)
                 {
                     ln.setBackgroundColor(Color.RED);
                 } else
