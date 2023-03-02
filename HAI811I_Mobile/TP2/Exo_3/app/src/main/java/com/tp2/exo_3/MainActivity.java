@@ -9,20 +9,22 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.hardware.camera2.CameraManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);
 
-        LinearLayout ln = new LinearLayout(this);
-        ln.setOrientation(LinearLayout.VERTICAL);
-        ln.setBackgroundColor(Color.BLACK);
+        LinearLayout ll = findViewById(R.id.ll);
+        TextView infos = findViewById(R.id.pos);
+        TextView infosSum = findViewById(R.id.somme);
 
         // Obtention du gestionnaire de capteurs
         SensorManager sensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
@@ -34,20 +36,23 @@ public class MainActivity extends AppCompatActivity {
         sensorManager.registerListener(new SensorEventListener() {
             @Override
             public void onSensorChanged(SensorEvent event) {
-                float x = event.values[0];
-                float y = event.values[1];
-                float z = event.values[2];
-                Log.d("Accéléromètre", "x = " + x + ", y = " + y + ", z = " + z);
+                float x = Math.abs(event.values[0]);
+                float y = Math.abs(event.values[1]);
+                float z = Math.abs(event.values[2]);
 
-                if (x<0.33 && y<0.33 && z<0.33)
+                float sum = x+y+z;
+
+                infos.setText("x : " + x + " y : " + y + ", z : " + z);
+                infosSum.setText("Somme : " + sum);
+
+                if (sum > 13 && sum < 16)
                 {
-                    ln.setBackgroundColor(Color.GREEN);
-                } else if (x>0.66 && y>0.66 && z>0.66)
-                {
-                    ln.setBackgroundColor(Color.RED);
+                    ll.setBackgroundColor(Color.GREEN);
+                } else if (sum > 16) {
+                    ll.setBackgroundColor(Color.RED);
                 } else
                 {
-                    ln.setBackgroundColor(Color.BLACK);
+                    ll.setBackgroundColor(Color.BLACK);
                 }
             }
 
@@ -56,8 +61,6 @@ public class MainActivity extends AppCompatActivity {
                 // Ne fait rien
             }
         }, accelerometer, SensorManager.SENSOR_DELAY_NORMAL);
-
-        setContentView(ln);
 
     }
 }
