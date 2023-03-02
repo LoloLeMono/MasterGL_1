@@ -22,14 +22,16 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     Boolean stateFlash = false;
-    float pre_x, pre_y, pre_z;
+    float pre_sum;
+    float biais = 15;
+    ImageView torch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ImageView torch = findViewById(R.id.torch);
+        torch = findViewById(R.id.torch);
 
         SensorManager sensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
         Sensor sensorShake = sensorManager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
@@ -51,18 +53,19 @@ public class MainActivity extends AppCompatActivity {
             }
 
             public void detectShake(SensorEvent sensorEvent){
-                float x_accl = sensorEvent.values[0];
-                float y_accl = sensorEvent.values[1];
-                float z_accl = sensorEvent.values[2];
+                float x = sensorEvent.values[0];
+                float y = sensorEvent.values[1];
+                float z = sensorEvent.values[2];
 
-                float floatSum = Math.abs(x_accl) + Math.abs(y_accl) + Math.abs(z_accl);
+                float sum = Math.abs(x) + Math.abs(y) + Math.abs(z);
 
-                if (floatSum > 14)
+                if (sum > pre_sum + biais)
                 {
+                    changeStateFlash();
+
                     try {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                            stateFlash = !stateFlash;
-                            cMng.setTorchMode(cMng.getCameraIdList()[1], true);
+                            cMng.setTorchMode(cMng.getCameraIdList()[0], stateFlash);
                         }
                     } catch (CameraAccessException e) {
                         throw new RuntimeException(e);
@@ -76,11 +79,20 @@ public class MainActivity extends AppCompatActivity {
                     torch.setImageResource(R.drawable.flashlight_off);
                 }
 
-                pre_x = x_accl;
-                pre_y = y_accl;
-                pre_z = z_accl;
+                pre_sum = sum;
             }
         };
         sensorManager.registerListener(sensorEventListener, sensorShake, SensorManager.SENSOR_DELAY_NORMAL);
+    }
+
+    void changeStateFlash(){
+        stateFlash = !stateFlash;
+
+        if (stateFlash){
+            torch.setImageResource(R.drawable.flashlight_on);
+        } else {
+            torch.setImageResource(R.drawable.flashlight_off);
+        }
+
     }
 }
