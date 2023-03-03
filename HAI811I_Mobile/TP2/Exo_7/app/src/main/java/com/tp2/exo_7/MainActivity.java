@@ -6,6 +6,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
@@ -16,6 +18,8 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
+
+import android.Manifest;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -35,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
+            Log.d("Location Permission", "Location permission not granted.");
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUEST_LOCATION_PERMISSION);
             // here to request the missing permissions, and then overriding
             //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
             //                                          int[] grantResults)
@@ -63,6 +69,8 @@ public class MainActivity extends AppCompatActivity {
                 GeoPoint geoPoint = new GeoPoint(latitude, longitude);
                 mapController.setCenter(geoPoint);
                 marker.setPosition(geoPoint);
+
+                Log.d("POSITION", "Latitude : " + latitude + ", Longitude : " + longitude);
             }
 
             @Override
@@ -78,5 +86,18 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    // Gérer la réponse de l'utilisateur à la demande de permission
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_LOCATION_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                recreate(); // Recréer l'activité pour initialiser la carte avec la permission accordée
+            } else {
+                Toast.makeText(this, "Permission de localisation refusée", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 }
