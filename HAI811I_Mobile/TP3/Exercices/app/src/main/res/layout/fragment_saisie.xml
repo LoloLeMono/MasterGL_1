@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginVertical="50dp"
+    android:layout_marginHorizontal="25dp"
+    android:orientation="vertical"
+    tools:ignore="ExtraText">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Saisir vos informations personnelles"/>
+
+    <EditText
+        android:id="@+id/editTextNom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nom"/>
+
+    <EditText
+        android:id="@+id/editTextPrenom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Prénom"/>
+
+    <EditText
+        android:id="@+id/editTextDateNaissance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Date de naissance"/>
+
+    <EditText
+        android:id="@+id/editTextTelephone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Téléphone"/>
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
+        android:hint="E-mail"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Centres d'intérêt"/>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp">
+
+        <CheckBox
+            android:id="@+id/checkboxSport"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Sport"/>
+
+        <CheckBox
+            android:id="@+id/checkboxMusique"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Musique"/>
+
+        <CheckBox
+            android:id="@+id/checkboxLecture"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Lecture"
+            android:checked="false"/>
+
+        <CheckBox
+            android:id="@+id/checkboxVoyage"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Voyage"/>
+
+        <CheckBox
+            android:id="@+id/checkboxCuisine"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Cuisine"/>
+
+        <CheckBox
+            android:id="@+id/checkboxCinema"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="Cinéma"/>
+    </GridLayout>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/syncSwitch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="25dp"
+        android:text="Synchroniser les données"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginRight="15dp"
+            android:text="Soumettre"/>
+
+        <Button
+            android:id="@+id/downloadBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Télécharger"/>
+    </LinearLayout>
+
+</androidx.appcompat.widget.LinearLayoutCompat>

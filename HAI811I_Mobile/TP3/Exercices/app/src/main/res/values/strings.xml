@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Exercices</string>
+
+    <item name="editTextNom" type="id"></item>
+    <item name="editTextPrenom" type="id"></item>
+    <item name="editTextDateNaissance" type="id"></item>
+    <item name="editTextTelephone" type="id"></item>
+    <item name="editTextEmail" type="id" />
+    <item name="checkboxSport" type="id" />
+    <item name="checkboxMusique" type="id" />
+    <item name="checkboxLecture" type="id" />
+    <item name="checkboxVoyage" type="id" />
+    <item name="checkboxCuisine" type="id" />
+    <item name="checkboxCinema" type="id" />
+    <item name="syncSwitch" type="id" />
+    <item name="submitBtn" type="id" />
+</resources>
