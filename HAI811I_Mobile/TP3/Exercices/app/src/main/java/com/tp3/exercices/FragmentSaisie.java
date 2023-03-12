@@ -114,8 +114,12 @@ public class FragmentSaisie extends Fragment {
             @Override
             public void onClick(View v)
             {
-                Intent intent = new Intent(this, HelloService.class);
-                startService(intent);
+                Intent intent = new Intent(getActivity(), DownloadService.class);
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+                    getActivity().startForegroundService(intent);
+                } else {
+                    getActivity().startService(intent);
+                }
             }
         });
 

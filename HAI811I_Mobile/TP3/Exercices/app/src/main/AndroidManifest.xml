@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Exercices"
         tools:targetApi="31">
+        <service android:name=".DownloadService" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
