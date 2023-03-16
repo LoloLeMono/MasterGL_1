@@ -1,0 +1,12 @@
+{
+  "nom": "Doe",
+  "prenom": "John",
+  "date_de_naissance": "01/01/1990",
+  "mail": "john.doe@example.com",
+  "Sport": true,
+  "Musique": false,
+  "Lecture": true,
+  "Voyage": true,
+  "Cuisine": false,
+  "Cinema": true
+}
