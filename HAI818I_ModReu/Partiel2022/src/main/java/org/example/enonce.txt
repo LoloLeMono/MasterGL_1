@@ -1,0 +1,34 @@
+interface BI {public mb();}
+class A{
+IB b;
+public void setB(IB b) {this.b = b;}
+public int ma() {return (1 + b.mb());}
+
+class B1 implements IB {
+public int mb() {return(2);}}
+
+class B2 implements IB {
+public int mb() {return(3);}}
+
+class Application
+public static void main (String[] args) {
+a.setB(new B2());
+a.ma();}}
+
+PARTIE 2 :
+
+public aspect ESAspect{
+    protected static int c=0;
+    static int getCount() {int aux= c; c=0; return aux;}
+
+    pointcut detectCreation(String d):
+        args(d) & execution (Directory new(String));
+
+    after (String s) : detectCreation (s){
+        System.out.println("le ... '' + s + "a ete cree"); }
+
+    pointcut count(Directory rec, ElementStockage arg) :
+        target(rec) && args(arg) && call (boolean Directory.add(..));
+
+    after (Directory rec, ElementStockage arg) : count(rec,arg) { c = c + 1; }
+} //end ESAspect

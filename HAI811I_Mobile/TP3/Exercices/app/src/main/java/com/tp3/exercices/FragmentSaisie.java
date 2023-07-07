@@ -28,7 +28,6 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class FragmentSaisie extends Fragment {
-
     private EditText editTextNom, editTextPrenom, editTextDateNaissance, editTextNumeroTelephone, editTextAdresseMail;
     private CheckBox checkBoxSport, checkBoxMusique, checkBoxLecture, checkBoxVoyage, checkBoxCuisine, checkBoxCinema;
     private SwitchCompat switchSynchronisation;
